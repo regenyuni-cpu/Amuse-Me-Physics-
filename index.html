@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amuse Me Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Chewy&family=Rye&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="app" id="app" data-screen="menu">
+  <div class="topbar" id="topbar" hidden>
+    <button class="btn sm" id="backBtn">‹ Menu</button>
+    <span class="ttl" id="screenTitle"></span>
+    <span class="tix" id="tix" title="Your tickets">🎟 <b id="tixN">0</b></span><button class="btn sm" id="badgeBtn">🏅</button><button class="btn sm" id="nightBtn">🌙 Night</button><button class="btn sm" id="meBtn">Me</button><button class="btn sm" id="soundBtn" aria-pressed="true">Sound on</button>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="cv" width="1536" height="864" aria-label="Pixel art amusement park"></canvas>
+
+    <div class="plus" id="plus"></div>
+    <div class="menu" id="menu">
+      <div class="marquee">
+        <h1 class="logo"><span class="l1">Amuse Me</span><span class="l2">Physics</span></h1>
+      </div>
+      <button class="start" id="startBtn">START</button>
+      <div class="mrow2"><button class="btn" id="menuMe">Customize character</button><button class="btn" id="menuNight">🌙 Night mode</button></div>
+      <p class="note">Tap START to open the park (sound on)</p>
+    </div>
+
+  </div>
+
+  <section class="help" id="help" hidden aria-label="Pip the helper">
+    <canvas id="mascot" width="128" height="152" aria-hidden="true"></canvas>
+    <div class="bubble">
+      <p id="bubText"></p>
+      <div class="brow"><button class="btn sm" id="helpBtn">🎓 Teach me how</button><button class="btn sm go" id="bubNext" hidden>Next</button></div>
+    </div>
+    <span class="sr" id="srSay" aria-live="polite"></span>
+  </section>
+
+  <div class="rides" id="rideList" hidden></div>
+
+  <section class="readout" id="readout" hidden aria-label="Live measurements">
+    <div class="chips" id="chips"></div>
+    <span id="speedNote"></span>
+    <button class="btn pop" id="btnReplay">▶ Replay</button>
+    <button class="btn pop" id="btnReset">↺ Reset</button>
+  </section>
+
+  <section class="chal" id="chal" hidden aria-label="Ticket challenge">
+    <button type="button" class="prizebar" id="prizeBar"></button>
+    <div class="chhead"><span class="badge" id="chBadge"></span><span class="rw" id="chRw"></span></div>
+    <div class="diff" id="diff"><span class="rw">Level:</span><button class="btn sm" data-d="0">Easy</button><button class="btn sm" data-d="1">Medium ×1.5</button><button class="btn sm" data-d="2">Hard ×2</button></div><div id="diffNote"></div>
+    <p class="story" id="chStory"></p>
+    <div class="gv-row" id="chGiven"></div>
+    <p class="ask" id="chAsk"></p>
+    <div class="arow"><input id="chIn" inputmode="decimal" autocomplete="off" placeholder="Your answer" aria-label="Your answer"><span id="chUnit"></span><button class="btn go" id="chSubmit">Check</button><button class="btn pop" id="chHint">💡 Hint</button><button class="btn sm" id="chNew">New problem</button></div>
+    <div class="fb" id="chFb" aria-live="polite"></div>
+    <div class="eqbox" id="chEq" hidden></div>
+    <details class="sheet"><summary>Equation sheet</summary><div class="cols">
+      <div><b>Translational</b><br>Vf = Vi + at<br>Δx = Vi t + ½ a t²<br>Vf² = Vi² + 2aΔx<br>Δx = ½(Vi + Vf) t</div>
+      <div><b>Rotational</b><br>ωf = ωi + αt<br>Δθ = ωi t + ½ α t²<br>ωf² = ωi² + 2αΔθ<br>Δθ = ½(ωi + ωf) t<br><i>Link: Δx = rΔθ, V = rω, a = rα</i></div></div></details>
+    <p class="hint">Solve for the missing quantity to win tickets. Want free play? Open the Sandbox bar with the arrow on the right (no tickets).</p>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true"><div class="mbox" id="mbox"></div></div>
+
+<aside class="drawer" id="drawer" hidden aria-label="Measurement bar">
+  <button class="dtab" id="drawerTab" aria-expanded="false" aria-label="Show the measurement bar"><span class="arrow"></span></button>
+  <div class="dscroll" id="dScroll">
+    <h2 id="dTitle"></h2>
+    <p class="dblurb" id="dBlurb"></p>
+    <div class="fields" id="dFields"></div>
+    <div class="dbtns" id="dExtra"></div>
+    <button class="big" id="btnGo">Amuse Me Physics</button>
+    <div class="dbtns"><button class="btn pop" id="btnExample">✨ Try an example</button><button class="btn pop" id="btnRand">🎲 Randomize</button><button class="btn sm" id="btnClear">Clear</button></div>
+    <div id="dResults"></div>
+  </div>
+</aside>
+
+<script src="script.js"></script>
+<script src="music.js"></script>
+
+</body>
+</html>
